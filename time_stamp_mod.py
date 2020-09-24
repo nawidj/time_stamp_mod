@@ -1,4 +1,4 @@
-# Script to modify the date of a MOD file
+# Script to update the modified date of a MOD file based on the MOI file information
 import struct
 import os
 import time
@@ -12,6 +12,7 @@ for file in glob.glob("*.MOI"):
 	fileName, _ = os.path.splitext(file)        
 	f = open(file, "rb")
 	b = f.read()
+	f.close()
 	(year,) = struct.unpack(">H", b[6:8])
 	(month,) = struct.unpack("B", b[8])
 	(day,) = struct.unpack("B", b[9])
